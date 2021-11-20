@@ -16,7 +16,6 @@ func NewBotAPIClient(token string) (*tgbotapi.BotAPI, error) {
 		return nil, err
 	}
 	return bot, nil
-
 }
 
 type bot struct {
