@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/caarlos0/env"
-	"github.com/joho/godotenv"
 	"github.com/labstack/gommon/log"
 	"github.com/schetininl/availability_parser/configs"
 	"github.com/schetininl/availability_parser/internal/app/parser"
@@ -11,11 +10,6 @@ import (
 
 func main() {
 	log.Info("Starting ...")
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	cfg := &configs.Config{}
 	if errParse := env.Parse(cfg); errParse != nil {
 		log.Panic(errParse)

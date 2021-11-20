@@ -18,6 +18,9 @@ func (d *Parser) StartWorker(minDuration, maxDuration int) {
 		Transport: &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}},
 	}
 	for {
+		dur := random(minDuration, maxDuration)
+		time.Sleep(time.Duration(dur) * time.Minute)
+
 		resp, err := client.Get(d.Target.URL)
 		if err != nil {
 			log.Error(err)
@@ -36,8 +39,5 @@ func (d *Parser) StartWorker(minDuration, maxDuration int) {
 				log.Error(msgErr)
 			}
 		}
-
-		dur := random(minDuration, maxDuration)
-		time.Sleep(time.Duration(dur) * time.Minute)
 	}
 }
